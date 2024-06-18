@@ -10,6 +10,8 @@ app.use(cors());
 
 queries.getAccounts(app,db);
 queries.createAccount(app,db);
+queries.updateAccount(app,db);
+queries.deleteAccount(app,db);
 
 app.listen(process.env.PORT, ()=>{
     console.log("listening");

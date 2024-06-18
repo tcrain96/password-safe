@@ -1,0 +1,20 @@
+.password-management-table{
+    width:100%;
+    background-color:rgb(106, 116, 250);
+    padding:30px 30px;
+    margin:20px 0px;
+    border-radius:10px;
+}
+.password-management-table-head{
+    background-color: rgba(255, 255, 255, 0.514);
+}
+.password-management-table-head th{
+    padding:10px 0px;
+}
+.password-management-table-body{
+    width:100%;
+    text-align: center;
+}
+.password-management-table-body tr td{
+    padding:20px 0px;
+}
