@@ -1,6 +1,9 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import CreateAccount from './CreateAccount';
 
 export default function GetAccounts(){
     
@@ -22,36 +25,51 @@ export default function GetAccounts(){
     }
 
     return(
-        <table className="password-management-table">
-            <thead className="password-management-table-head">
-                <th>
-                    ID
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Password
-                </th>
-                <th>
-                    Website
-                </th>
-            </thead>
-            <tbody className="password-management-table-body">
-            {
-                account.map((data,i)=>(
-                    <tr key={i}>
-                        <td>{data.ID}</td>
-                        <td>{data.Email}</td>
-                        <td>{data.Password}</td>
-                        <td>{data.Website}</td>
-                        <td><Link to={`/update/${data.ID}`} className="btn">Update</Link></td>
-                        <td><button onClick={e=>handleDelete(data.ID)}>Delete</button></td>
+        <>
+        <section className="table-container">
+             
+            <table className="password-management-table">
+                <thead className="password-management-table-head">
+                    <tr>
+                        <th>
+                        Website
+                        </th>
+                        <th>
+                        Email
+                        </th>
+                        <th>
+                        Password
+                        </th>
+                        <th colSpan={2}>
+                            Actions
+                        </th>
                     </tr>
-                ))
-            }
-            </tbody>
-        </table>
+                </thead>
+                <tbody className="password-management-table-body">
+                <CreateAccount></CreateAccount>   
+                {
+                    account.map((data,i)=>(
+                        <tr key={i}>
+                            <td>{data.Website}</td>   
+                            <td>{data.Email}</td>
+                            <td>{data.Password}</td>                    
+                            <td className="edit-account-btn-container">
+                                <div>
+                                    <Link className="btn" to={`/update/${data.ID}`}><FontAwesomeIcon className="edit-account-icon" icon={faPenToSquare}/></Link>
+                                </div>
+                            </td>
+                            <td className="delete-account-btn-container">
+                                <div>
+                                    <button className="btn" onClick={e=>handleDelete(data.ID)}><FontAwesomeIcon className="delete-account-icon" icon={faTrash} /></button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))
+                }
+                </tbody>
+            </table>
+        </section>
+        </>
     );
 
 }
